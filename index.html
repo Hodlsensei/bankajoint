@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BankaJoint - A Premium Community for Nigerian Bank Workers</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #000000;
+            background: #ffffff;
+        }
+
+        /* Header */
+        header {
+            background: #ffffff;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-banka {
+            color: #C9A227;
+        }
+
+        .logo-joint {
+            color: #000000;
+            font-style: italic;
+        }
+
+        .header-cta {
+            background: #105EC7;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .header-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(16, 94, 199, 0.3);
+            background: #0d4fa3;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #105EC7 0%, #0d4fa3 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #C9A227;
+            color: #000000;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 14px rgba(201, 162, 39, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(201, 162, 39, 0.6);
+            background: #b08f1f;
+        }
+
+        /* Problem Section */
+        .problem-section {
+            background: #f8fafc;
+            padding: 4rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #000000;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #4a5568;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .problem-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid #ef4444;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .problem-card h3 {
+            color: #000000;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .problem-card p {
+            color: #4a5568;
+            font-size: 0.95rem;
+        }
+
+        .solution-statement {
+            text-align: center;
+            font-size: 1.25rem;
+            color: #105EC7;
+            font-weight: 600;
+            margin-top: 3rem;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 4rem 2rem;
+            background: white;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            color: #2d3748;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .ideal-member {
+            background: #f0f7ff;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border: 2px solid #105EC7;
+        }
+
+        .ideal-member h3 {
+            color: #000000;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .ideal-member ul {
+            list-style: none;
+            text-align: left;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .ideal-member li {
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: #2d3748;
+        }
+
+        .ideal-member li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #C9A227;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            background: #f8fafc;
+            padding: 4rem 2rem;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid #C9A227;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-card h3 {
+            color: #000000;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .benefit-card ul {
+            list-style: none;
+            color: #4a5568;
+        }
+
+        .benefit-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .benefit-card li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #105EC7;
+            font-weight: bold;
+        }
+
+        /* Philosophy Section */
+        .philosophy-section {
+            background: linear-gradient(135deg, #C9A227 0%, #b08f1f 100%);
+            color: #000000;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .philosophy-section h2 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 4rem 2rem;
+            background: white;
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 2rem;
+            background: #f8fafc;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #C9A227;
+        }
+
+        .faq-item h3 {
+            color: #000000;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .faq-item p {
+            color: #2d3748;
+            line-height: 1.7;
+        }
+
+        .faq-item ul {
+            list-style: none;
+            margin-top: 0.5rem;
+            color: #2d3748;
+        }
+
+        .faq-item li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .faq-item li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #105EC7;
+            font-weight: bold;
+        }
+
+        /* CTA Section */
+        .final-cta {
+            background: linear-gradient(135deg, #105EC7 0%, #0d4fa3 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .final-cta h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .final-cta p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        /* Footer */
+        footer {
+            background: #000000;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .footer-tagline {
+            color: #a0aec0;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            margin-top: 1.5rem;
+        }
+
+        .footer-links a {
+            color: #C9A227;
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #b08f1f;
+        }
+
+        .copyright {
+            margin-top: 2rem;
+            color: #a0aec0;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .header-cta {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .problem-grid,
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <span class="logo-banka">Banka</span><span class="logo-joint">Joint</span>
+            </div>
+            <a href="#apply" class="header-cta">Apply to Join</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>A Premium Community for Nigerian Bank Workers</h1>
+            <p>Grow beyond the office — professionally, socially, and financially.</p>
+            <a href="#apply" class="cta-button">👉 Apply to Join BankaJoint</a>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem-section">
+        <div class="container">
+            <h2 class="section-title">Why BankaJoint Exists</h2>
+            <p class="section-subtitle">Most bankers struggle with</p>
+            
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <h3>❌ Limited Career Guidance</h3>
+                    <p>Access to honest career guidance is hard to find</p>
+                </div>
+                <div class="problem-card">
+                    <h3>❌ Shallow Networks</h3>
+                    <p>Professional networks that don't go beyond surface-level connections</p>
+                </div>
+                <div class="problem-card">
+                    <h3>❌ Work Burnout</h3>
+                    <p>Burnout from work-focused routines with no balance</p>
+                </div>
+                <div class="problem-card">
+                    <h3>❌ No Safe Space</h3>
+                    <p>No safe space to explore opportunities and grow</p>
+                </div>
+            </div>
+
+            <p class="solution-statement">BankaJoint was created to change that.</p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <h2 class="section-title">About BankaJoint</h2>
+            <div class="about-content">
+                <p><strong>BankaJoint</strong> is a premium community for Nigerian bank workers who want to grow intentionally — in career, network, and life.</p>
+                <p>It's a high-value network of banking fellows.</p>
+
+                <div class="ideal-member">
+                    <h3>If you are a:</h3>
+                    <ul>
+                        <li>Current Nigerian bank staff</li>
+                        <li>Professional seeking clarity, growth and accountability partners</li>
+                        <li>Banker who values strong networks</li>
+                        <li>Banker who doesn't want to get stuck in life</li>
+                    </ul>
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <a href="#apply" class="cta-button">Join Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <h2 class="section-title">What Members Get</h2>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎓</div>
+                    <h3>Growth Events</h3>
+                    <ul>
+                        <li>Career advancement insights from top bankers</li>
+                        <li>Conversations with successful ex-bankers</li>
+                    </ul>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">🌍</div>
+                    <h3>Signature Community Tours</h3>
+                    <ul>
+                        <li>Visits to tourist attraction centers (Twice a Year)</li>
+                        <li>Shared experiences that create real bonds</li>
+                    </ul>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">🤝</div>
+                    <h3>Meaningful Network</h3>
+                    <ul>
+                        <li>Access to people who understand banking realities</li>
+                        <li>Conversations that actually matter</li>
+                    </ul>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">💼</div>
+                    <h3>Ethical Income Opportunities</h3>
+                    <ul>
+                        <li>Access to vetted job opportunities</li>
+                        <li>Side income bootcamps</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section class="philosophy-section">
+        <h2>Our Philosophy</h2>
+        <p style="font-size: 1.3rem; margin-top: 1rem;">Go together. Grow together.</p>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <h3>Is BankaJoint really free?</h3>
+                    <p>Yes. Joining BankaJoint is currently free. However, membership is subject to approval to maintain quality and trust within the community.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Who can apply to join BankaJoint?</h3>
+                    <p>BankaJoint is open to:</p>
+                    <ul>
+                        <li>Current Nigerian bank staff</li>
+                        <li>Professionals working within the banking sector</li>
+                        <li>Individuals seeking growth, accountability, and strong professional networks</li>
+                    </ul>
+                    <p style="margin-top: 1rem;">Applicants outside the banking ecosystem will not be approved.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>How does the application process work?</h3>
+                    <p>After applying:</p>
+                    <ul>
+                        <li>Your details are reviewed</li>
+                        <li>Applicants receive an invite to the community</li>
+                        <li>Unsuccessful applications may be reconsidered in the future</li>
+                    </ul>
+                </div>
+
+                <div class="faq-item">
+                    <h3>What activities happen inside the community?</h3>
+                    <p>BankaJoint focuses on:</p>
+                    <ul>
+                        <li>Curated growth webinars and events</li>
+                        <li>Community accountability check-ins during designated periods</li>
+                        <li>Two signature community tours each year</li>
+                    </ul>
+                    <p style="margin-top: 1rem;">We intentionally avoid noise and random discussions.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Are there membership dues or hidden fees?</h3>
+                    <p>No membership dues at any point. Some activities (such as tours or dinners) will be pay-as-you-go.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Are the tours compulsory?</h3>
+                    <p>No. Community tours are optional experiences designed for bonding and relaxation. Members choose what fits their schedule and convenience.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>What do you mean by "ethical income opportunities"?</h3>
+                    <p>These are optional opportunities shared within the community, such as:</p>
+                    <ul>
+                        <li>Vetted job opportunities</li>
+                        <li>Skill-building bootcamps for bankers</li>
+                        <li>Structured side-income masterclasses</li>
+                    </ul>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Is BankaJoint a job placement or recruitment platform?</h3>
+                    <p>No. BankaJoint is a community, not a job board or recruitment agency. However, we will occasionally share job opportunities that suit our members.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>How can I contact the BankaJoint team?</h3>
+                    <p>You can reach us via WhatsApp at <strong>08134444693</strong> or through the official community after joining.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="final-cta" id="apply">
+        <h2>Apply Now!</h2>
+        <p>Joining BankaJoint is FREE. BUT membership is approved based on basic screening to preserve quality and trust.</p>
+        <a href="https://forms.gle/your-application-form" class="cta-button">👉 Apply to Join BankaJoint</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span class="logo-banka">Banka</span><span class="logo-joint">Joint</span>
+            </div>
+            <p class="footer-tagline">A Community for Nigerian Bank Workers</p>
+            <div class="footer-links">
+                <a href="#apply">Apply to Join</a>
+                <span style="color: #4a5568;">|</span>
+                <a href="https://wa.me/2348134444693">Contact</a>
+            </div>
+            <p class="copyright">© BankaJoint 2025. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
