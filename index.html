@@ -171,19 +171,37 @@
             margin-top: 3rem;
         }
 
-        /* About Section */
+        /* About Section - NEW LAYOUT WITH IMAGE */
         .about-section {
             padding: 4rem 2rem;
             background: white;
         }
 
-        .about-content {
-            max-width: 800px;
+        .about-layout {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+            max-width: 1200px;
             margin: 0 auto;
-            text-align: center;
         }
 
-        .about-content p {
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text p {
             font-size: 1.1rem;
             color: #2d3748;
             margin-bottom: 1.5rem;
@@ -206,9 +224,6 @@
 
         .ideal-member ul {
             list-style: none;
-            text-align: left;
-            max-width: 600px;
-            margin: 0 auto;
         }
 
         .ideal-member li {
@@ -298,10 +313,29 @@
             letter-spacing: 1px;
         }
 
-        /* FAQ Section */
+        /* NEW: Community Image Section */
+        .community-image-section {
+            padding: 0;
+            background: white;
+        }
+
+        .community-image-section img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* FAQ Section - NEW ACCORDION STYLE */
         .faq-section {
             padding: 4rem 2rem;
-            background: white;
+            background: #f8fafc;
+        }
+
+        .faq-intro {
+            text-align: center;
+            color: #4a5568;
+            margin-bottom: 3rem;
+            font-size: 1.05rem;
         }
 
         .faq-container {
@@ -310,37 +344,78 @@
         }
 
         .faq-item {
-            margin-bottom: 2rem;
-            background: #f8fafc;
-            padding: 2rem;
-            border-radius: 12px;
-            border-left: 4px solid #C9A227;
-        }
-
-        .faq-item h3 {
-            color: #000000;
             margin-bottom: 1rem;
-            font-size: 1.2rem;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
 
-        .faq-item p {
+        .faq-question {
+            width: 100%;
+            padding: 1.5rem 3rem 1.5rem 1.5rem;
+            background: white;
+            border: none;
+            text-align: left;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #000000;
+            cursor: pointer;
+            position: relative;
+            transition: background 0.2s;
+            font-family: inherit;
+        }
+
+        .faq-question:hover {
+            background: #f8fafc;
+        }
+
+        .faq-question::after {
+            content: "▼";
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.9rem;
+            color: #4a5568;
+            transition: transform 0.3s;
+        }
+
+        .faq-question.active::after {
+            transform: translateY(-50%) rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            padding: 0 1.5rem;
+        }
+
+        .faq-answer.active {
+            max-height: 1000px;
+            padding: 0 1.5rem 1.5rem 1.5rem;
+        }
+
+        .faq-answer p {
             color: #2d3748;
             line-height: 1.7;
+            margin-bottom: 0.75rem;
         }
 
-        .faq-item ul {
+        .faq-answer ul {
             list-style: none;
             margin-top: 0.5rem;
             color: #2d3748;
         }
 
-        .faq-item li {
+        .faq-answer li {
             padding: 0.5rem 0;
             padding-left: 1.5rem;
             position: relative;
         }
 
-        .faq-item li:before {
+        .faq-answer li:before {
             content: "•";
             position: absolute;
             left: 0;
@@ -367,7 +442,7 @@
             opacity: 0.95;
         }
 
-        /* Footer */
+        /* Footer - WHITE LOGO */
         footer {
             background: #000000;
             color: white;
@@ -384,6 +459,15 @@
             font-size: 1.5rem;
             font-weight: 700;
             margin-bottom: 1rem;
+        }
+
+        /* WHITE FOOTER LOGO */
+        footer .logo-banka {
+            color: #ffffff;
+        }
+
+        footer .logo-joint {
+            color: #ffffff;
         }
 
         .footer-tagline {
@@ -434,6 +518,20 @@
             .problem-grid,
             .benefits-grid {
                 grid-template-columns: 1fr;
+            }
+
+            /* Mobile: Stack image and text vertically */
+            .about-layout {
+                flex-direction: column;
+            }
+
+            .about-image {
+                width: 100%;
+                min-width: auto;
+            }
+
+            .about-text {
+                width: 100%;
             }
         }
     </style>
@@ -487,24 +585,33 @@
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- About Section with Image -->
     <section class="about-section">
         <div class="container">
             <h2 class="section-title">About BankaJoint</h2>
-            <div class="about-content">
-                <p><strong>BankaJoint</strong> is a premium community for Nigerian bank workers who want to grow intentionally — in career, network, and life.</p>
-                <p>It's a high-value network of banking fellows.</p>
+            
+            <div class="about-layout">
+                <!-- Image on the left (desktop), top (mobile) -->
+                <div class="about-image">
+                    <img src="./images/community-1.jpeg" alt="BankaJoint Community Members">
+                </div>
+                
+                <!-- Text on the right (desktop), bottom (mobile) -->
+                <div class="about-text">
+                    <p><strong>BankaJoint</strong> is a premium community for Nigerian bank workers who want to grow intentionally — in career, network, and life.</p>
+                    <p>It's a high-value network of banking fellows.</p>
 
-                <div class="ideal-member">
-                    <h3>If you are a:</h3>
-                    <ul>
-                        <li>Current Nigerian bank staff</li>
-                        <li>Professional seeking clarity, growth and accountability partners</li>
-                        <li>Banker who values strong networks</li>
-                        <li>Banker who doesn't want to get stuck in life</li>
-                    </ul>
-                    <div style="text-align: center; margin-top: 2rem;">
-                        <a href="#apply" class="cta-button">Join Us</a>
+                    <div class="ideal-member">
+                        <h3>If you are a:</h3>
+                        <ul>
+                            <li>Current Nigerian bank staff</li>
+                            <li>Professional seeking clarity, growth and accountability partners</li>
+                            <li>Banker who values strong networks</li>
+                            <li>Banker who doesn't want to get stuck in life</li>
+                        </ul>
+                        <div style="text-align: center; margin-top: 2rem;">
+                            <a href="#apply" class="cta-button">Join Us</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -562,77 +669,101 @@
         <p style="font-size: 1.3rem; margin-top: 1rem;">Go together. Grow together.</p>
     </section>
 
-    <!-- FAQ Section -->
+    <!-- Community Image Section - NEW -->
+    <section class="community-image-section">
+        <img src="./images/community-2.jpeg" alt="BankaJoint Members Together">
+    </section>
+
+    <!-- FAQ Section - ACCORDION STYLE -->
     <section class="faq-section">
         <div class="container">
             <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="faq-intro">Everything you need to know about joining BankaJoint.</p>
             
             <div class="faq-container">
                 <div class="faq-item">
-                    <h3>Is BankaJoint really free?</h3>
-                    <p>Yes. Joining BankaJoint is currently free. However, membership is subject to approval to maintain quality and trust within the community.</p>
+                    <button class="faq-question">Is BankaJoint really free?</button>
+                    <div class="faq-answer">
+                        <p>Yes. Joining BankaJoint is currently free. However, membership is subject to approval to maintain quality and trust within the community.</p>
+                    </div>
                 </div>
 
                 <div class="faq-item">
-                    <h3>Who can apply to join BankaJoint?</h3>
-                    <p>BankaJoint is open to:</p>
-                    <ul>
-                        <li>Current Nigerian bank staff</li>
-                        <li>Professionals working within the banking sector</li>
-                        <li>Individuals seeking growth, accountability, and strong professional networks</li>
-                    </ul>
-                    <p style="margin-top: 1rem;">Applicants outside the banking ecosystem will not be approved.</p>
+                    <button class="faq-question">Who can apply to join BankaJoint?</button>
+                    <div class="faq-answer">
+                        <p>BankaJoint is open to:</p>
+                        <ul>
+                            <li>Current Nigerian bank staff</li>
+                            <li>Professionals working within the banking sector</li>
+                            <li>Individuals seeking growth, accountability, and strong professional networks</li>
+                        </ul>
+                        <p style="margin-top: 1rem;">Applicants outside the banking ecosystem will not be approved.</p>
+                    </div>
                 </div>
 
                 <div class="faq-item">
-                    <h3>How does the application process work?</h3>
-                    <p>After applying:</p>
-                    <ul>
-                        <li>Your details are reviewed</li>
-                        <li>Applicants receive an invite to the community</li>
-                        <li>Unsuccessful applications may be reconsidered in the future</li>
-                    </ul>
+                    <button class="faq-question">How does the application process work?</button>
+                    <div class="faq-answer">
+                        <p>After applying:</p>
+                        <ul>
+                            <li>Your details are reviewed</li>
+                            <li>Applicants receive an invite to the community</li>
+                            <li>Unsuccessful applications may be reconsidered in the future</li>
+                        </ul>
+                    </div>
                 </div>
 
                 <div class="faq-item">
-                    <h3>What activities happen inside the community?</h3>
-                    <p>BankaJoint focuses on:</p>
-                    <ul>
-                        <li>Curated growth webinars and events</li>
-                        <li>Community accountability check-ins during designated periods</li>
-                        <li>Two signature community tours each year</li>
-                    </ul>
-                    <p style="margin-top: 1rem;">We intentionally avoid noise and random discussions.</p>
+                    <button class="faq-question">What activities happen inside the community?</button>
+                    <div class="faq-answer">
+                        <p>BankaJoint focuses on:</p>
+                        <ul>
+                            <li>Curated growth webinars and events</li>
+                            <li>Community accountability check-ins during designated periods</li>
+                            <li>Two signature community tours each year</li>
+                        </ul>
+                        <p style="margin-top: 1rem;">We intentionally avoid noise and random discussions.</p>
+                    </div>
                 </div>
 
                 <div class="faq-item">
-                    <h3>Are there membership dues or hidden fees?</h3>
-                    <p>No membership dues at any point. Some activities (such as tours or dinners) will be pay-as-you-go.</p>
+                    <button class="faq-question">Are there membership dues or hidden fees?</button>
+                    <div class="faq-answer">
+                        <p>No membership dues at any point. Some activities (such as tours or dinners) will be pay-as-you-go.</p>
+                    </div>
                 </div>
 
                 <div class="faq-item">
-                    <h3>Are the tours compulsory?</h3>
-                    <p>No. Community tours are optional experiences designed for bonding and relaxation. Members choose what fits their schedule and convenience.</p>
+                    <button class="faq-question">Are the tours compulsory?</button>
+                    <div class="faq-answer">
+                        <p>No. Community tours are optional experiences designed for bonding and relaxation. Members choose what fits their schedule and convenience.</p>
+                    </div>
                 </div>
 
                 <div class="faq-item">
-                    <h3>What do you mean by "ethical income opportunities"?</h3>
-                    <p>These are optional opportunities shared within the community, such as:</p>
-                    <ul>
-                        <li>Vetted job opportunities</li>
-                        <li>Skill-building bootcamps for bankers</li>
-                        <li>Structured side-income masterclasses</li>
-                    </ul>
+                    <button class="faq-question">What do you mean by "ethical income opportunities"?</button>
+                    <div class="faq-answer">
+                        <p>These are optional opportunities shared within the community, such as:</p>
+                        <ul>
+                            <li>Vetted job opportunities</li>
+                            <li>Skill-building bootcamps for bankers</li>
+                            <li>Structured side-income masterclasses</li>
+                        </ul>
+                    </div>
                 </div>
 
                 <div class="faq-item">
-                    <h3>Is BankaJoint a job placement or recruitment platform?</h3>
-                    <p>No. BankaJoint is a community, not a job board or recruitment agency. However, we will occasionally share job opportunities that suit our members.</p>
+                    <button class="faq-question">Is BankaJoint a job placement or recruitment platform?</button>
+                    <div class="faq-answer">
+                        <p>No. BankaJoint is a community, not a job board or recruitment agency. However, we will occasionally share job opportunities that suit our members.</p>
+                    </div>
                 </div>
 
                 <div class="faq-item">
-                    <h3>How can I contact the BankaJoint team?</h3>
-                    <p>You can reach us via WhatsApp at <strong>08134444693</strong> or through the official community after joining.</p>
+                    <button class="faq-question">How can I contact the BankaJoint team?</button>
+                    <div class="faq-answer">
+                        <p>You can reach us via WhatsApp at <strong>08134444693</strong> or through the official community after joining.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -642,7 +773,7 @@
     <section class="final-cta" id="apply">
         <h2>Apply Now!</h2>
         <p>Joining BankaJoint is FREE. BUT membership is approved based on basic screening to preserve quality and trust.</p>
-        <a href="https://forms.gle/your-application-form" class="cta-button">👉 Apply to Join BankaJoint</a>
+        <a href="https://forms.gle/oeKT2F5NZWL4Q6wk8" class="cta-button">👉 Apply to Join BankaJoint</a>
     </section>
 
     <!-- Footer -->
@@ -660,5 +791,31 @@
             <p class="copyright">© BankaJoint 2025. All Rights Reserved.</p>
         </div>
     </footer>
+
+    <!-- JavaScript for FAQ Accordion -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const answer = this.nextElementSibling;
+                    const isActive = this.classList.contains('active');
+                    
+                    // Close all other FAQs
+                    faqQuestions.forEach(q => {
+                        q.classList.remove('active');
+                        q.nextElementSibling.classList.remove('active');
+                    });
+                    
+                    // Toggle current FAQ
+                    if (!isActive) {
+                        this.classList.add('active');
+                        answer.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
